@@ -26,9 +26,7 @@ const reducer = (state, action) => {
       break;
     }
     case "EDIT": {
-      newState = state.map((it) =>
-        it.id === action.data.id ? { ...action.data } : it
-      );
+      newState = state.map((it) => (it.id === action.data.id ? { ...action.data } : it));
       break;
     }
     default:
@@ -40,8 +38,42 @@ const reducer = (state, action) => {
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
+const dummyData = [
+  {
+    id: 1,
+    emotion: 1,
+    content: "오늘의일기 1번",
+    date: 1648444573552,
+  },
+  {
+    id: 2,
+    emotion: 2,
+    content: "오늘의일기 2번",
+    date: 1648444573553,
+  },
+  {
+    id: 3,
+    emotion: 3,
+    content: "오늘의일기 3번",
+    date: 1648444573554,
+  },
+  {
+    id: 4,
+    emotion: 4,
+    content: "오늘의일기 4번",
+    date: 1648444573555,
+  },
+  {
+    id: 5,
+    emotion: 5,
+    content: "오늘의일기 5번",
+    date: 1648444573556,
+  },
+];
+
 function App() {
-  const [data, dispatch] = useReducer(reducer, []);
+  const [data, dispatch] = useReducer(reducer, dummyData);
+  console.log(new Date().getTime());
 
   const dataId = useRef(0);
   // CREATE
