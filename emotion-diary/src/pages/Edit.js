@@ -10,6 +10,11 @@ const Edit = () => {
   const { id } = useParams();
 
   const diaryList = useContext(DiaryStateContext);
+  /* 페이지 타이틀 변경 코드 */
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 -${id}번 일기 수정`;
+  }, []);
 
   /* diarylist가 mounte 됐을 때 수정 하기 위해 useEffect사용 */
   useEffect(() => {

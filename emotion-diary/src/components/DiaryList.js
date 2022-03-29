@@ -17,7 +17,7 @@ const filterOptionList = [
 
 const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   useEffect(() => {
-    console.log("Control Menu");
+    // console.log("Control Menu");
   });
   /* 
     value : select가 선택하고 있는 것 

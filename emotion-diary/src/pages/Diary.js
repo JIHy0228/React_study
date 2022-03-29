@@ -15,6 +15,13 @@ const Diary = () => {
   const diaryList = useContext(DiaryStateContext);
   const navigate = useNavigate();
   const [data, setData] = useState();
+
+  /* 페이지 타이틀 변경 코드 */
+  useEffect(() => {
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 -${id}번 일기`;
+  }, []);
+
   useEffect(() => {
     if (diaryList.length > 1) {
       const targetDiary = diaryList.find((it) => parseInt(it.id) === parseInt(id));
@@ -32,6 +39,7 @@ const Diary = () => {
     return <div className="DiaryPage">로딩중입니다...</div>;
   } else {
     const curEmotionData = emotionList.find((it) => parseInt(it.emotion_id) === parseInt(data.emotion));
+    console.log(data);
     console.log(curEmotionData);
 
     return (
