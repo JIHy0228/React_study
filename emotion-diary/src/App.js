@@ -15,10 +15,7 @@ const reducer = (state, action) => {
       return action.data;
     }
     case "CREATE": {
-      const newItem = {
-        ...action.data,
-      };
-      newState = [newItem, ...state];
+      newState = [action.data, ...state];
       break;
     }
     case "REMOVE": {
@@ -26,7 +23,9 @@ const reducer = (state, action) => {
       break;
     }
     case "EDIT": {
-      newState = state.map((it) => (it.id === action.data.id ? { ...action.data } : it));
+      newState = state.map((it) =>
+        it.id === action.data.id ? { ...action.data } : it
+      );
       break;
     }
     default:
@@ -45,7 +44,9 @@ function App() {
   useEffect(() => {
     const localData = localStorage.getItem("diary");
     if (localData) {
-      const diaryList = JSON.parse(localData).sort((a, b) => parseInt(b.id) - parseInt(a.id));
+      const diaryList = JSON.parse(localData).sort(
+        (a, b) => parseInt(b.id) - parseInt(a.id)
+      );
 
       if (diaryList.length >= 1) {
         dataId.current = parseInt(diaryList[0].id + 1);

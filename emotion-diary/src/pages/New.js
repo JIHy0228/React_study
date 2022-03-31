@@ -1,10 +1,6 @@
 import { useEffect } from "react";
 import DiaryEditor from "../components/DiaryEditor";
 
-const getStringDate = (date) => {
-  return date.toISOString().slice(0, 10);
-};
-
 const New = () => {
   /* 페이지 타이틀 변경 코드 */
   useEffect(() => {

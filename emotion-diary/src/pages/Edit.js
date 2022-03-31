@@ -13,17 +13,20 @@ const Edit = () => {
   /* 페이지 타이틀 변경 코드 */
   useEffect(() => {
     const titleElement = document.getElementsByTagName("title")[0];
-    titleElement.innerHTML = `감정 일기장 -${id}번 일기 수정`;
+    titleElement.innerHTML = `감정 일기장 - ${id}번 일기 수정`;
   }, []);
 
   /* diarylist가 mounte 됐을 때 수정 하기 위해 useEffect사용 */
   useEffect(() => {
     if (diaryList.length >= 1) {
-      const targetDiary = diaryList.find((it) => parseInt(it.id) === parseInt(id));
+      const targetDiary = diaryList.find(
+        (it) => parseInt(it.id) === parseInt(id)
+      );
 
       if (targetDiary) {
         setOriginData(targetDiary);
       } else {
+        alert("없는 일기입니다.");
         navigate("/", { replace: true });
         /*
         replace : true <- 뒤로가기를 못하게 막음
@@ -32,7 +35,11 @@ const Edit = () => {
       }
     }
   }, [id, diaryList]);
-  return <div>{originData && <DiaryEditor isEdit={true} originData={originData} />}</div>;
+  return (
+    <div>
+      {originData && <DiaryEditor isEdit={true} originData={originData} />}
+    </div>
+  );
 };
 
 export default Edit;
