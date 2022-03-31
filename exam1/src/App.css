@@ -1,0 +1,10 @@
+.App .Modal button {
+  border: none;
+  border-radius: 5px;
+  width: 6rem;
+  height: 3rem;
+  background-color: #c7c7c7;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
