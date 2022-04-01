@@ -20,23 +20,10 @@ const Home = () => {
 
   useEffect(() => {
     if (diaryList.length >= 1) {
-      const firstDay = new Date(
-        curDate.getFullYear(),
-        curDate.getMonth(),
-        1
-      ).getTime();
-      const lastDay = new Date(
-        curDate.getFullYear(),
-        curDate.getMonth() + 1,
-        0,
-        23,
-        59,
-        59
-      ).getTime();
+      const firstDay = new Date(curDate.getFullYear(), curDate.getMonth(), 1).getTime();
+      const lastDay = new Date(curDate.getFullYear(), curDate.getMonth() + 1, 0, 23, 59, 59).getTime();
 
-      setData(
-        diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay)
-      );
+      setData(diaryList.filter((it) => firstDay <= it.date && it.date <= lastDay));
     }
   }, [diaryList, curDate]);
 
@@ -45,23 +32,15 @@ const Home = () => {
   }, [data]);
 
   const inCreaseMonth = () => {
-    setCurDate(
-      new Date(curDate.getFullYear(), curDate.getMonth() + 1, curDate.getDate())
-    );
+    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() + 1));
   };
 
   const deCreaseMonth = () => {
-    setCurDate(
-      new Date(curDate.getFullYear(), curDate.getMonth() - 1, curDate.getDate())
-    );
+    setCurDate(new Date(curDate.getFullYear(), curDate.getMonth() - 1));
   };
   return (
     <div>
-      <MyHeader
-        headText={headText}
-        leftChild={<MyButton text={"<"} onClick={deCreaseMonth} />}
-        rightChild={<MyButton text={">"} onClick={inCreaseMonth} />}
-      />
+      <MyHeader headText={headText} leftChild={<MyButton text={"<"} onClick={deCreaseMonth} />} rightChild={<MyButton text={">"} onClick={inCreaseMonth} />} />
       <DiaryList diaryList={data} />
     </div>
   );
