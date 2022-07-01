@@ -9,6 +9,10 @@ number.innerText = 0;
 const ADD = "ADD";
 const MINUS = "MINUS";
 
+//   reducer (state, action)
+/*   action 형식 : object
+     action 필수 요소 : type
+*/
 const countModifier = (count = 0, action) => {
   switch (action.type) {
     case ADD:
@@ -20,6 +24,7 @@ const countModifier = (count = 0, action) => {
   }
 };
 
+// store
 // counterStore data 저장소
 const countStore = legacy_createStore(countModifier);
 
@@ -29,10 +34,11 @@ const onChange = () => {
 
 countStore.subscribe(onChange);
 
+/*  action 형식 : object
+    action 필수 요소 : type
+    dispatch : store의 내장 함수 => action을 발생시키는 것
+*/
 const handleAdd = () => {
-  /* action 형식 : object
-     action 필수 요소 : type
-  */
   countStore.dispatch({ type: ADD });
 };
 
