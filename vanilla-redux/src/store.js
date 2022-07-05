@@ -13,11 +13,11 @@ const addToDo = (text) => {
 const deleteToDo = (id) => {
   return {
     type: DELETE,
-    id,
+    id: parseInt(id),
   };
 };
 
-const reducer = (state = ["hello"], action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
     case ADD:
       return [{ text: action.text, id: Date.now() }, ...state];
@@ -29,5 +29,10 @@ const reducer = (state = ["hello"], action) => {
 };
 
 const store = createStore(reducer);
+
+export const actionCreators = {
+  addToDo,
+  deleteToDo,
+};
 
 export default store;
